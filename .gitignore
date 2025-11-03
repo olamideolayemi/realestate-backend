@@ -1,0 +1,5 @@
+/.env
+/README.md
+/configs
+/docker-compose.yml
+/server
