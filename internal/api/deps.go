@@ -13,6 +13,7 @@ type Dependencies struct {
 	PropertyHandler *handlers.PropertyHandler
 	BookingHandler  *handlers.BookingHandler
 	HealthHandler   *handlers.HealthHandler
+	UsersHandler	*handlers.UsersHandler
 }
 
 func NewDependencies(db *gorm.DB) *Dependencies {
@@ -22,11 +23,13 @@ func NewDependencies(db *gorm.DB) *Dependencies {
 	prop := &handlers.PropertyHandler{DB: db}
 	book := &handlers.BookingHandler{DB: db}
 	health := &handlers.HealthHandler{DB: db}
+	user := &handlers.UsersHandler{DB: db}
 
 	deps.AuthHandler = auth
 	deps.PropertyHandler = prop
 	deps.BookingHandler = book
 	deps.HealthHandler = health
+	deps.UsersHandler = user
 
 	return deps
 }

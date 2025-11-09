@@ -142,5 +142,8 @@ func (h *PropertyHandler) DeleteProperty(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to delete property"})
 		return
 	}
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Property erased from record",
+	})
 	c.Status(http.StatusNoContent)
 }

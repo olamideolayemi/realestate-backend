@@ -12,6 +12,8 @@ type User struct {
 	PasswordHash string    `gorm:"not null" json:"-"`
 	Name         string    `json:"name"`
 	Role         string    `gorm:"default:user" json:"role"` // admin|agent|user
+	IsVerified	 bool      `json:"is_verified"`
+	ExpiresAt 	 *time.Time `json:"expires_at"` // nullable
 	CreatedAt    time.Time `json:"created_at"`
 	UpdatedAt    time.Time `json:"updated_at"`
 }

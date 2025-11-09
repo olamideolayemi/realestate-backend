@@ -1,5 +1,7 @@
 /.env
 /README.md
 /configs
-/docker-compose.yml
 /server
+app.log
+app
+.env 

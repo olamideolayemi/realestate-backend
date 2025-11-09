@@ -14,6 +14,8 @@ func RegisterRoutes(r *gin.Engine, deps *Dependencies) {
 	// Auth
 	api.POST("/auth/register", deps.AuthHandler.Register)
 	api.POST("/auth/login", deps.AuthHandler.Login)
+	api.POST("/auth/verify", deps.AuthHandler.VerifyEmail)
+	api.POST("/auth/resend-ver", deps.AuthHandler.ResendVerification)
 
 	// Properties
 	props := api.Group("/properties")
@@ -25,6 +27,10 @@ func RegisterRoutes(r *gin.Engine, deps *Dependencies) {
 	admin.POST("/properties", deps.PropertyHandler.CreateProperty)
 	admin.PATCH("/properties/:id", deps.PropertyHandler.UpdateProperty)
 	admin.DELETE("/properties/:id", deps.PropertyHandler.DeleteProperty)
+	// Users (Admin)
+	admin.GET("/users", deps.UsersHandler.ListUsers)
+	admin.GET("/users/:id", deps.UsersHandler.GetUser)
+	admin.DELETE("/users/:id", deps.UsersHandler.DeleteUser)
 
 	// Bookings
 	api.POST("/bookings", middleware.AuthMiddleware(deps.DB), deps.BookingHandler.CreateBooking)
